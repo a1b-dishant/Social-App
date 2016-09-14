@@ -16,4 +16,22 @@
     "gender": "female",
     "image": ""
 
+}, {
+    "name": "Jaydeep Jagani",
+    "age": 24,
+    "gender": "male",
+    "image": ""
+
+}, {
+    "name": "Yogesh Makwana",
+    "age": 25,
+    "gender": "male",
+    "image": ""
+
+}, {
+    "name": "Grishma Kotadiya",
+    "age": 21,
+    "gender": "female",
+    "image": ""
+
 }]

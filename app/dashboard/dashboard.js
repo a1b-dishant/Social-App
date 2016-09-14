@@ -24,3 +24,23 @@ angular.module('socialApp.dashboard', ['ngRoute'])
             templateUrl: 'dashboard/block-template.html'
         }
     })
+    .filter('nameFilter', function($mdToast) {
+        return function(people, searchuser) {
+            if (searchuser) {
+                var rearr = _.filter(people, function(person) {
+                    return person.name.toLowerCase().indexOf(searchuser) > -1;
+                });
+                /*if (rearr && !rearr.length) {
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .textContent('No Data Found')
+                        .position('top right')
+                        .hideDelay(3000)
+                    );
+                }*/
+                return rearr;
+            } else {
+                return people;
+            }
+        }
+    })

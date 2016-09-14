@@ -1,7 +1,20 @@
 <div>
-    <md-content class="md-padding" layout="column">
-        <div flex-xs flex-gt-xs="100" layout="row">
-            <block ng-repeat="person in people"></block>
-        </div>
+    <md-content class="md-padding" layout="row">
+        <md-input-container flex="50">
+            <input ng-model="searchuser" type="text" placeholder="Search User Detail">
+        </md-input-container>
+        <md-input-container flex="50">
+            <label>Block Per Row</label>
+            <md-select name="type" ng-model="blocksrows" required>
+                <md-option value="100">1</md-option>
+                <md-option value="50">2</md-option>
+                <md-option value="33">3</md-option>
+                <md-option value="25" selected>4</md-option>
+                <md-option value="20">5</md-option>
+            </md-select>
+        </md-input-container>
+    </md-content>
+    <md-content class="md-padding" layout="row" layout-wrap>
+        <block ng-repeat="person in people | nameFilter:searchuser"></block>
     </md-content>
 </div>
