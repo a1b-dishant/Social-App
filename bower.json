@@ -1,0 +1,13 @@
+{
+  "name": "Social App in AngularJS",
+  "description": "A Social App made in AngularJS",
+  "version": "1.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-material": "^1.1.1"
+  }
+}

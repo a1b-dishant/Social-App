@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Make Seprate File of Module & Controller to load data from there-->
+<html ng-app="socialApp">
+
+<head>
+    <title>:: Welcome to Social App :: </title>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/style/icon.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src='bower_components/angular-animate/angular-animate.min.js'></script>
+    <script src='bower_components/angular-aria/angular-aria.min.js'></script>
+    <script src='bower_components/angular-material/angular-material.js'></script>
+    <script src='bower_components/angular-messages/angular-messages.min.js'></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+</head>
+
+<body>
+    <div ng-view></div>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="dashboard/dashboard.js"></script>
+    <script type="text/javascript" src="dashboard/crudFactory.js"></script>
+</body>
+
+</html>

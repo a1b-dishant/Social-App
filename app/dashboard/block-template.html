@@ -1,0 +1,23 @@
+<div flex-xs flex-gt-xs="25" layout="column">
+    <md-card md-theme="dark-purple" md-theme-watch="">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{person.name}}</span>
+                <span class="md-subhead">{{person.age}}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-sm card-media">
+                    <img ng-if="!person.image" ng-src="assets/images/default-{{person.gender == 'male' ? 'boy':'girl'}}.jpg" alt="No Image">
+                    <img ng-if="person.image" ng-src="assets/images/{{person.image}}" alt="No Image">
+                </div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>View Profile</md-button>
+            <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="favourite=!favourite;">
+                <i ng-show="favourite" class="material-icons">favorite</i>
+                <i ng-hide="favourite" class="material-icons">favorite_border</i>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>
