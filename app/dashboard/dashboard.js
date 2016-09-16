@@ -4,10 +4,17 @@ angular.module('socialApp.dashboard', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/dashboard', {
             templateUrl: 'dashboard/index.html',
-            controller: 'dashboardController'
+            controller: 'dashboardController',
+            resolve: {
+                message: ['crudFactory', '$q', function(crudFactory, $q) {
+                    //show spinner
+                    return crudFactory.getData();
+                }]
+            }
         });
     }])
-    .controller('dashboardController', ['$scope', 'crudFactory', function($scope, curdFactory) {
+    .controller('dashboardController', ['$scope', 'crudFactory', function($scope, curdFactory, message) {
+        $scope.message = message;
         curdFactory.getData().then(
             function(resp) {
                 $scope.people = resp.data;
