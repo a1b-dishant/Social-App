@@ -1,0 +1,41 @@
+<div layout="row" flex="70">
+    <md-card>
+        <img ng-if="!person.coverImage" ng-src="assets/images/cover/no-cover.jpg" class="md-card-image" alt="{{person.name}} Cover Image">
+        <img ng-if="person.image" ng-src="{{person.coverImage}}" class="md-card-image" alt="{{person.name}} Cover Image">
+        <md-card-title>
+            <md-card-title-media>
+                <img class="profile-image" layout="row" ng-if="!person.image" ng-src="assets/images/profile/default-{{person.gender.toLowerCase() == 'male' ? 'boy':'girl'}}.jpg" alt="No Image">
+                <img class="profile-image" layout="row" ng-if="person.image" ng-src="{{person.image}}" alt="{{person.name}}">
+            </md-card-title-media>
+            <md-card-title-text flex-offset="5">
+                <span class="md-headline">{{person.name}}</span>
+                <span class="md-subhead">{{person.age}},{{person.gender}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="start center">
+            <md-card-icon-actions>
+                <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="favourite=!favourite;">
+                    <i ng-show="favourite" class="material-icons ">favorite</i>
+                    <i ng-hide="favourite" class="material-icons ">favorite_border</i>
+                </md-button>
+                <!-- <md-button class="md-icon-button" aria-label="Share">
+    <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+</md-button>
+ -->
+            </md-card-icon-actions>
+            <md-button class="md-raised md-primary md-hue-1">
+                <md-icon><i class="material-icons">person_add</i></md-icon>
+                Add to Book
+            </md-button>
+            <md-button class="md-raised md-primary md-hue-1">
+                <md-icon><i class="material-icons">edit</i></md-icon>
+                Edit Profile
+            </md-button>
+        </md-card-actions>
+        <md-card-content>
+            <p layout="row">
+                {{person.bio}}
+            </p>
+        </md-card-content>
+    </md-card>
+</div>

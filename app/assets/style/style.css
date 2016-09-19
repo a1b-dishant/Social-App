@@ -1,16 +1,22 @@
-.profile-image
- img{
-	float: left;
-	width: 250px;
-	height: 250px;
-	margin: 0px 20px 0px 0px;
+.profile-image img {
+    float: left;
+    width: 250px;
+    height: 250px;
+    margin: 0px 20px 0px 0px;
 }
 
-.profile-detail p{
-	font-size: 20px;
+.profile-detail p {
+    font-size: 20px;
 }
+
 .card-media {
-  background-color: #999999; }
+    background-color: #999999;
+}
 
- .md-button.md-dark-purple-theme:not([disabled]):hover {
-    background-color: rgba(158,158,158,0.2)!important;
+.md-button.md-dark-purple-theme:not([disabled]):hover {
+    background-color: rgba(158, 158, 158, 0.2)!important;
+}
+
+.profile-image {
+    margin-top: -111px;
+}

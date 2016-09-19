@@ -7,13 +7,13 @@
             </md-card-title-text>
             <md-card-title-media>
                 <div class="md-media-sm card-media">
-                    <img ng-if="!person.image" ng-src="assets/images/default-{{person.gender == 'male' ? 'boy':'girl'}}.jpg" alt="No Image">
-                    <img ng-if="person.image" ng-src="assets/images/{{person.image}}" alt="No Image">
+                    <img ng-if="!person.image" ng-src="assets/images/profile/default-{{person.gender.toLowerCase() == 'male' ? 'boy':'girl'}}.jpg" alt="No Image">
+                    <img ng-if="person.image" ng-src="{{person.image}}" alt="{{person.name}}">
                 </div>
             </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button>View Profile</md-button>
+            <md-button ng-href="#/profile/{{ person.id }}">View Profile</md-button>
             <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="favourite=!favourite;">
                 <i ng-show="favourite" class="material-icons">favorite</i>
                 <i ng-hide="favourite" class="material-icons">favorite_border</i>

@@ -2,16 +2,43 @@
 
 angular.module('socialApp.dashboard', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/dashboard', {
-            templateUrl: 'dashboard/index.html',
-            controller: 'dashboardController',
-            resolve: {
-                message: ['crudFactory', '$q', function(crudFactory, $q) {
-                    //show spinner
-                    return crudFactory.getData();
-                }]
-            }
-        });
+        $routeProvider
+            .when('/dashboard', {
+                templateUrl: 'dashboard/index.html',
+                controller: 'allProfileController',
+                /*resolve: {
+                    message: ['crudFactory', '$q', function(crudFactory, $q) {
+                        //show spinner
+                        return crudFactory.getData();
+                    }]
+                }*/
+                resolve: {
+                    people: ['Post', '$q', function(Post, $q) {
+                        var defer = $q.defer();
+                        Post.getAllProfiles().then(function(data) {
+                            defer.resolve(data);
+                        }, function(error) {
+                            defer.reject(error);
+                        });
+                        return defer.promise;
+                    }]
+                }
+            })
+            .when('/profile/:id', {
+                templateUrl: 'dashboard/profile.html',
+                controller: 'singleProfileController',
+                resolve: {
+                    person: ['Post', '$q', '$route', function(Post, $q, $route) {
+                        var defer = $q.defer();
+                        Post.getProfile($route.current.params.id).then(function(data) {
+                            defer.resolve(data);
+                        }, function(error) {
+                            defer.reject(error);
+                        });
+                        return defer.promise;
+                    }]
+                }
+            });
     }])
     .controller('dashboardController', ['$scope', 'crudFactory', function($scope, curdFactory, message) {
         $scope.message = message;
@@ -24,6 +51,12 @@ angular.module('socialApp.dashboard', ['ngRoute'])
             }
         )
     }])
+    .controller("allProfileController", ['$scope', '$resource', 'people', function($scope, $resource, people) {
+        $scope.people = people;
+    }])
+    .controller("singleProfileController", ['$scope', '$routeParams', 'person', function($scope, $routeParams, person) {
+        $scope.person = person;
+    }])
     .directive('block', function() {
         return {
             restrict: 'E',
@@ -35,7 +68,7 @@ angular.module('socialApp.dashboard', ['ngRoute'])
         return function(people, searchuser) {
             if (searchuser) {
                 var rearr = _.filter(people, function(person) {
-                    return person.name.toLowerCase().indexOf(searchuser) > -1;
+                    return person.name.toLowerCase().indexOf(searchuser.toLowerCase()) > -1;
                 });
                 /*if (rearr && !rearr.length) {
                     $mdToast.show(
